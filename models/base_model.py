@@ -6,6 +6,7 @@ Module containing the BaseModel class.
 import uuid
 from datetime import datetime
 import models
+from models import storage
 
 
 class BaseModel:
@@ -68,3 +69,7 @@ class BaseModel:
         """
         class_name = self.__class__.__name__
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
+
+    def delete(self):
+        
+        storage.delete(self)
